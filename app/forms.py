@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import TextField
-from wtforms.validators import Required
+from wtforms import StringField
+from wtforms.validators import DataRequired
 
 
 class CSRFProtectForm(FlaskForm):
@@ -9,4 +9,4 @@ class CSRFProtectForm(FlaskForm):
 
 
 class RequestForm(CSRFProtectForm):
-    email = TextField('email', validators=[Required()])
+    email = StringField('email', validators=[DataRequired()])
