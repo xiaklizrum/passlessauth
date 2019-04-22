@@ -16,7 +16,8 @@ def login():
         if user:
             return render_template(
                 'auth.html',
-                result='User with email {} already exist'.format(form.email.data)
+                result='User with email {} already exist'.format(
+                    form.email.data)
             )
         user = User(email=form.email.data)
         session.add(user)
@@ -44,7 +45,8 @@ def login():
 
 @app.route('/invoice/<hash>')
 def activate(hash):
-    invoice = session.query(SignInRequest).filter_by(token=hash, activated=False).first()
+    invoice = session.query(SignInRequest).filter_by(
+        token=hash, activated=False).first()
     if invoice:
         invoice.activated = datetime.now()
         session.add(invoice)
