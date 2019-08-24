@@ -1,14 +1,11 @@
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
-
 # Cache
 __pycache__/
-
 # Flask stuff:
 instance/
 .webassets-cache
-
 # Environments
 .env
 .venv
@@ -17,7 +14,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+#docker
+docker/mysql
 # Custom
 .idea/
 creditals.py

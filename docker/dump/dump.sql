@@ -1,3 +1,4 @@
+USE passlessauth;
 CREATE TABLE IF NOT EXISTS `sign_in_requests` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(100) NOT NULL DEFAULT '',

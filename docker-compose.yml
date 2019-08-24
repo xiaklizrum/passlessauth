@@ -1,0 +1,26 @@
+version: "3"
+services:
+  web:
+    image: python:3
+    restart: always
+    working_dir: /var/www
+    command: bash -c "cp -n .env.example .env && pip install -r requirements.txt && python run.py"
+    volumes:
+      - .:/var/www
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - ${PYTHON_EXPOSE_PORT}:5000
+    depends_on:
+    - db
+  db:
+    image: mysql:5.7.24
+    restart: always
+    ports:
+      - ${MYSQL_EXPOSE_PORT}:3306
+    volumes:
+      - ./docker/dump:/docker-entrypoint-initdb.d:ro
+      - ./docker/mysql:/var/lib/mysql:rw
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
