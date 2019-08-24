@@ -1,14 +1,14 @@
 <html>
-    <head>
-        <title>Passwordless Authentification</title>
-    </head>
-    <body>
-        <h1>Request Authentification</h1>
-        <form method="post">
-            {{ form.email }} Email
-            <br/>
-            <button type="submit">Request authentificate link</button>
-            {{ form.csrf_token }}
-        </form>
-    </body>
+<head>
+    <title>Passwordless Authentication</title>
+</head>
+<body>
+<h1>Request Authentication</h1>
+<form method="post">
+    {{ form.email }} Email
+    <br/>
+    <button type="submit">Request authentication link</button>
+    {{ form.csrf_token }}
+</form>
+</body>
 </html>
