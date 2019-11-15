@@ -18,4 +18,5 @@ venv.bak/
 docker/mysql
 # Custom
 .idea/
+.devcontainer
 creditals.py
