@@ -1,10 +1,13 @@
 version: "3"
 services:
   web:
-    image: python:3
+    image: passlessauth/python
+    build:
+      context: ./
+      dockerfile: Dockerfile
     restart: always
     working_dir: /var/www
-    command: bash -c "cp -n .env.example .env && pip install -r requirements.txt && python run.py"
+    command: sh -c "cp -n .env.example .env && python run.py"
     volumes:
       - .:/var/www
     environment:
@@ -22,5 +25,8 @@ services:
       - ./docker/dump:/docker-entrypoint-initdb.d:ro
       - ./docker/mysql:/var/lib/mysql:rw
     environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_SERVER: ${MYSQL_SERVER}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
